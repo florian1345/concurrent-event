@@ -5,6 +5,7 @@ categories = [ "concurrency" ]
 keywords = [ "event", "concurrent", "parallel" ]
 version = "0.1.0"
 repository = "https://github.com/florian1345/concurrent-event"
+documentation = "https://docs.rs/concurrent-event"
 license = "MIT OR Apache-2.0"
 authors = ["florian1345 <florian1345@gmx.de>"]
 edition = "2018"
