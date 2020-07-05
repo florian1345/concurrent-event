@@ -5,11 +5,13 @@
 //!
 //! The system was setup to be resistant to adversarial code. In particular,
 //! IDs are assigned randomly with sufficiently many bits to be unfeasable to
-//! guess. However, we provide no guarantees as the security properties were
-//! not rigorously proven.
+//! guess. As a consequence, efficiency may suffer. Particularly the IDs are
+//! larger than they would need to be if assigned sequentially.
 //!
-//! As a consequence, efficiency may suffer. Particularly the IDs are larger
-//! than they would need to be if assigned sequentially.
+//! # Important Note
+//!
+//! We provide no guarantees as the security properties were not rigorously
+//! verified. Do not use in critical systems without further investigation!
 //!
 //! # Example
 //!
@@ -68,6 +70,8 @@ impl<A: Copy + Send, H: EventHandler<A>> Event<A, H> {
     }
 
     /// Emits an event, invoking all currently registered handlers in parallel.
+    /// If all event handlers terminated without panicking, `true` is returned.
+    /// If any event handler panics, `false` is returned.
     ///
     /// # Parameters
     ///
